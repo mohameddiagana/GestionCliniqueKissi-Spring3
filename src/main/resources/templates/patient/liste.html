@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Patients List</title>
+</head>
+<body>
+<h1>Patients List</h1>
+<table>
+    <tr>
+        <th>idpatient</th>
+        <th>codep</th>
+        <th>nomp</th>
+        <th>prenom</th>
+        <th>email</th>
+        <th>tel</th>
+        <th>sexe</th>
+        <th>datenaissance</th>
+        <th>adresse</th>
+        <th>profession</th>
+        <th>CIN</th>
+        <th>age</th>
+    </tr>
+    <tr th:each="p : ${list_patients}">
+        <td th:text="${p.idpatient}"></td>
+        <td th:text="${p.codep}"></td>
+        <td th:text="${p.nomp}"></td>
+        <td th:text="${p.prenom}"></td>
+        <td th:text="${p.email}"></td>
+        <td th:text="${p.tel}"></td>
+        <td th:text="${p.sexe}"></td>
+        <td th:text="${p.datenaissance}"></td>
+        <td th:text="${p.adresse}"></td>
+        <td th:text="${p.profession}"></td>
+        <td th:text="${p.CIN}"></td>
+        <td th:text="${p.age}"></td>
+        <td>
+        <td><a th:href="@{/patient/edit(idpatient=${p.idpatient})}">Editer</a></td>
+        </td>
+        <a onclick="return confirm('Etes Vous Sure de vouloir supprimer ce Patient !!! ')"
+           th:href="@{/patient/delete(idpatient=${p.idpatient})}">Supprimer</a>
+        </td>
+    </tr>
+</table>
+<!--&lt;!&ndash;<a href="/patients/addPatient">Add New Patient</a>&ndash;&gt;-->
+<!--<tr>-->
+<!--    <td>Gender:</td>-->
+<!--    <td>{{patient.gender}}</td>-->
+<!--</tr>-->
+</body>
+</html>

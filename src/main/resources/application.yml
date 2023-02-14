@@ -3,14 +3,30 @@
 #    url: jdbc:postgresql://localhost:5432/GestionCliniqueKissi
 #    username: diagana
 #    password: diagana
+#    #datasource.initialization-mode-always
 #    driver-class-name: org.postgresql.Driver
 #    jpa:
 #      hibernate:
-#        ddl-auto: create-drop
+#        ddl-auto: create
 #      show-sql: true
 #      properties:
 #        hibernate:
 #          format_sql: true
 #      database: postgresql
 #      database-plateform: org.hibernate.dialect.PostgreSQLDialect
+#      version: '3.1'
+#      services:
+#        postgres-db:
+#          # New Container
+#          container_name: postgres-sUif
+#          image: postgres:latest
+#          restart: always
+#          environment:
+#            POSTGRES_USER: diagana
+#            POSTGRES_PASSWORD: diagana
+#            POSTGRES_DB: GestionCliniqueKissi
+#            PGDATA: /var/lib/postgresql/data/pgdata
+#
+#
+#
 #

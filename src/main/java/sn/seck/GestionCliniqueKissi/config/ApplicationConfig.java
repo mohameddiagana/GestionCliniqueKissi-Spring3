@@ -23,13 +23,14 @@ public class ApplicationConfig {
     public UserDetailsService userDetailsService(){
         return username -> userRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException(" please User not found"));
+
     }
+
     @Bean
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authprovider = new DaoAuthenticationProvider();
         authprovider.setUserDetailsService(userDetailsService());
         authprovider.setPasswordEncoder(passwordEncoder());
-
         return authprovider;
 
     }
