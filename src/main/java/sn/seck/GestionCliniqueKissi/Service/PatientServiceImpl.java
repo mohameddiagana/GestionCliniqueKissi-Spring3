@@ -7,7 +7,8 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import sn.seck.GestionCliniqueKissi.Model.Patient;
 import sn.seck.GestionCliniqueKissi.Repository.PatientRepository;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Service
 @Transactional
 @Slf4j
-@CacheConfig(cacheNames = "patients")
+//@CacheConfig(cacheNames = "patients")
 public class PatientServiceImpl implements PatientService {
     private PatientRepository patientRepository;
 
@@ -24,15 +25,15 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    @ResponseStatus(code = HttpStatus.CREATED)
+    @ResponseBody
     public Patient addNewPatient(@RequestBody Patient patient) {
-        log.info("Saving new Patient {} to the database", patient.getNomp());
-        return patientRepository.save(patient);
+        log.info("Add new Patient {} to the database", patient.getNomp());
+        return patientRepository.saveAndFlush(patient);
     }
 
     @Override
     public Patient getPatient(String nomp) {
-        log.info("Fetching patient{}",nomp);
+        log.info("geting patient{}",nomp);
         return patientRepository.findByPatient(nomp);
     }
 

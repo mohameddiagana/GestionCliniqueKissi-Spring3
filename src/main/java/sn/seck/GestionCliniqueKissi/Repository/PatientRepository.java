@@ -8,9 +8,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import sn.seck.GestionCliniqueKissi.Model.Patient;
 
-//@EnableJpaRepositories
 @Repository
 public interface PatientRepository extends JpaRepository<Patient,Integer> {
-    @Query(value = "SELECT p FROM Patient p WHERE p.nomp =:nomp",nativeQuery = true)
-    public Patient findByPatient(String nomp);
+    @Modifying
+    @Query(value = "SELECT p FROM Patient p WHERE p.nomp =:nomp")
+    public Patient findByPatient(@Param("nomp")String nomp);
 }

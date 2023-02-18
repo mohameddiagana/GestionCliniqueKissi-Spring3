@@ -18,10 +18,9 @@ import java.util.TimeZone;
 //@CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin( "http://localhost:8080/api/v1/patients/liste")
 @RestController
-@RequestMapping("/api/v1/patients")
+@RequestMapping("/api/v1/")
 public class PatientController {
-
-
+    @Autowired
     private PatientRepository patientRepository;
 
     public PatientController(PatientRepository patientRepository) {
@@ -29,6 +28,7 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/patient/liste")
+    @ResponseBody
     public String listpatients(ModelMap map) {
         log.info("Fetching all patients");
         List<Patient> listpatients = patientRepository.findAll();
@@ -44,33 +44,32 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/patient/add", method = RequestMethod.POST)
+    @ResponseBody
     public String addNewPatient(String nomp, int idpatient) throws ParseException {//ajout et mise à jour
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.FRENCH);
-//        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("PST"));
-//        Date date = simpleDateFormat.parse("31/12/2023");
-//        System.out.println(date);
         log.info("Saving New Patient in database {}", patientRepository.findByPatient(nomp));
         Patient patient = new Patient();
-        patient.setIdpatient(patient.getIdpatient());
+        patient.setIdpatient(idpatient);
         patient.setCodep(patient.getCodep());
-        patient.setNomp(patient.getNomp());
-        patient.setPrenom(patient.getPrenom());
+        patient.setNomp(nomp);
+        patient.setPrenom(patient.getPrenom( ));
         patient.setEmail(patient.getEmail());
         patient.setTel(patient.getTel());
         patient.setSexe(patient.getSexe());
         patient.setDatenaissance(patient.getDatenaissance());
-        patient.setProfession(patient.getProfession());
+        patient.setProfession(patient.getProfession( ));
         patient.setCIN(patient.getCIN());
         patient.setAge(patient.getAge());
 
-        patientRepository.save(patient);
+        patientRepository.saveAndFlush(patient);
 
         return "redirect:/patient/liste";
     }
 
 
+
     @RequestMapping(value = "/patient/edit", method = RequestMethod.GET)
     public String edit(ModelMap model, int idpatient) {
+        log.info("Edit the new patient!");
         List<Patient> patients = patientRepository.findAll();
         model.put("list_patients", patients);
         Patient pts = patientRepository.getById(idpatient);
@@ -78,7 +77,7 @@ public class PatientController {
         return "/patient/liste";
     }
     @RequestMapping(path = "/patient/update",method = RequestMethod.PUT)
-    public String update(@PathVariable Long idpatient, @RequestBody Patient patient){
+    public String update(@PathVariable int idpatient, @RequestBody Patient patient){
         log.info("UPDATE THE NEW PATIENT !!!");
         patient.setIdpatient(idpatient);
         return "/patient/liste";

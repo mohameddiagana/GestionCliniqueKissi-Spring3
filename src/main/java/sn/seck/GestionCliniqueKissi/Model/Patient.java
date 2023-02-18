@@ -6,16 +6,20 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+
+@Data
 @Getter
 @Setter
 @Entity
-@Data
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,10 +27,11 @@ import java.util.Date;
 uniqueConstraints =
 @UniqueConstraint(columnNames = "email"))
 
+@EntityListeners(AuditingEntityListener.class)
 public class Patient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idpatient;
+    private int idpatient;
     @Column(name = "codep")
     private int codep;
     @Column(name = "nomp")
@@ -38,13 +43,12 @@ public class Patient implements Serializable {
     private String email;
     @Column(name = "tel")
     private String tel;
-    @Column(name = "sexe", length = 100)
+    @Column(name = "sexe")
     private String sexe;
-    @Column(name = "datenaissance", length = 100)
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
-    @DateTimeFormat( pattern = "yyyy-MM-dd")
-//    @NotNull(message = "Date ne doit pas etre null")
-//    @Past(message = "Invalide Date")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
+    @Column(name = "datenaissance")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @CreatedDate
     private Date datenaissance;
     @Column(name = "adresse")
     private String adresse;
@@ -56,7 +60,11 @@ public class Patient implements Serializable {
     private int age;
 
 
-    public Patient(Long idpatient, int codep, String diagana, String bocar, String email, String tel, String male, String s, String sahm, String dev, int cin, int age) {
+    public Patient(int idpatient, int codep, String nomp, String prenom, String email, String tel, String sexe, Date datenaissance, String adresse, String profession, String cin, int age) {
     }
+
+
 }
+
+
 
