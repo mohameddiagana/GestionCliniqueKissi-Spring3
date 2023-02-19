@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -45,11 +46,11 @@ public class Patient implements Serializable {
     private String tel;
     @Column(name = "sexe")
     private String sexe;
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "GMT")
     @Column(name = "datenaissance")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "GMT")
     @CreatedDate
-    private Date datenaissance;
+    private LocalDate datenaissance;
     @Column(name = "adresse")
     private String adresse;
     @Column(name = "profession")
@@ -62,6 +63,7 @@ public class Patient implements Serializable {
 
     public Patient(int idpatient, int codep, String nomp, String prenom, String email, String tel, String sexe, Date datenaissance, String adresse, String profession, String cin, int age) {
     }
+
 
 
 }

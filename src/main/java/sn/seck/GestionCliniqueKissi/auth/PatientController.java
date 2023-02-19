@@ -9,10 +9,10 @@ import sn.seck.GestionCliniqueKissi.Repository.PatientRepository;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
+
 
 @Slf4j
 //@CrossOrigin(origins = "http://localhost:4200")
@@ -20,6 +20,8 @@ import java.util.TimeZone;
 @RestController
 @RequestMapping("/api/v1/")
 public class PatientController {
+
+
     @Autowired
     private PatientRepository patientRepository;
 
@@ -45,7 +47,8 @@ public class PatientController {
 
     @RequestMapping(value = "/patient/add", method = RequestMethod.POST)
     @ResponseBody
-    public String addNewPatient(String nomp, int idpatient) throws ParseException {//ajout et mise à jour
+    public String addNewPatient(String nomp, int idpatient) throws Exception {//ajout et mise à jour
+
         log.info("Saving New Patient in database {}", patientRepository.findByPatient(nomp));
         Patient patient = new Patient();
         patient.setIdpatient(idpatient);
@@ -55,11 +58,17 @@ public class PatientController {
         patient.setEmail(patient.getEmail());
         patient.setTel(patient.getTel());
         patient.setSexe(patient.getSexe());
+
+        /*INSERTION DATE*/
+//        Date date = Calendar.getInstance().getTime();
+//        SimpleDateFormat formatter   = new SimpleDateFormat("dd/MM/yyyy");
+//        String today = formatter.format(date);
+//        System.out.println("Today : " + today);
+        /*INSERTION DATE*/
         patient.setDatenaissance(patient.getDatenaissance());
         patient.setProfession(patient.getProfession( ));
         patient.setCIN(patient.getCIN());
         patient.setAge(patient.getAge());
-
         patientRepository.saveAndFlush(patient);
 
         return "redirect:/patient/liste";

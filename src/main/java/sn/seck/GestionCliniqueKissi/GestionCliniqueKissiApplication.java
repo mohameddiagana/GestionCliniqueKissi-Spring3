@@ -14,7 +14,11 @@ import sn.seck.GestionCliniqueKissi.Model.Users;
 import sn.seck.GestionCliniqueKissi.Service.PatientService;
 import sn.seck.GestionCliniqueKissi.Service.UserService;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 
 
 @SpringBootApplication
@@ -41,17 +45,28 @@ public class GestionCliniqueKissiApplication {
 	CommandLineRunner start( ) {
 		return args -> {
 
+			LocalDate date = LocalDate.now();
+
+			// Formater la date dans un format spécifique
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+			String dateFormatted = date.format(formatter);
+
+			// Afficher la date dans la console
+			System.out.println("La date d'aujourd'hui est: " + dateFormatted);
+
+
 	userService.addNewUser(new Users( 1,"moha","diagana","mdiaganaisidk@gmail.com","1234", Role.ADMIN ));
 	userService.addNewUser(new Users( 22,"mohamed bocar","samba","assisi@gmail.sn","passer123", Role.USER ));
 	userService.addNewUser(new Users( 5,"yacoub","samba","ycb@gmail.sn","passer123", Role.SUPER_ADMIN ));
 	userService.addNewUser(new Users( 22,"da bocar","va","assisi@gmail.sn","123", Role.COMPTABLE ));
 
 
-			patientService.addNewPatient(new Patient(1, 124,"dahaba","tandia ablaye","dbtandia@gmail.com","772512985","male",
-					null,"sahm","developpeur",861254587,20));
 
-			patientService.addNewPatient(new Patient(2, 552,"lala","tandia la","lala@gmail.com","772565225","femel",
-					null,"police4","commercante",877878444,60));
+	patientService.addNewPatient(new Patient(1, 124, "dahaba", "tandia ablaye", "dbtandia@gmail.com", "772512985", "male",
+			LocalDate.now(), "sahm", "developpeur", 861254587, 20));
+
+	patientService.addNewPatient(new Patient(2, 552,"lala","tandia la","lala@gmail.com","772565225","femel",
+			LocalDate.now(),"police4","commercante",877878444,60));
 
 
 		};
