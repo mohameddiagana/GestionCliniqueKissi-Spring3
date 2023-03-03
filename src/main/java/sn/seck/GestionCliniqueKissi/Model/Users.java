@@ -12,6 +12,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@ToString
 @Entity
 @Data
 @NoArgsConstructor
@@ -23,11 +24,12 @@ public class Users implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "firstname",length = 100)
+    @Column(name = "firstname",length = 150)
     private String firstname;
-    @Column(name = "lastname",length = 100)
+    @Column(name = "lastname",length = 150)
+
     private String lastname;
-    @Column(name = "email",length = 100)
+    @Column(name = "email",length = 150)
     private String email;
     @Column(name = "password",length = 100)
     private String password;

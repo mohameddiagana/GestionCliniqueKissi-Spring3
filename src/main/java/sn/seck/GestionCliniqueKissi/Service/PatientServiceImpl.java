@@ -16,8 +16,9 @@ import java.util.List;
 @Service
 @Transactional
 @Slf4j
-//@CacheConfig(cacheNames = "patients")
+@CacheConfig(cacheNames = "patients")
 public class PatientServiceImpl implements PatientService {
+    @Autowired
     private PatientRepository patientRepository;
 
     public PatientServiceImpl(PatientRepository patientRepository) {

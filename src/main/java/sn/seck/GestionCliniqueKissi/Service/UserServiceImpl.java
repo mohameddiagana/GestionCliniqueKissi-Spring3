@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import sn.seck.GestionCliniqueKissi.Model.Users;
 import sn.seck.GestionCliniqueKissi.Repository.UserRepository;
 
@@ -27,12 +28,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Users addNewUser(@RequestBody Users user) {
-        String pwd = user.getPassword();
-        user.setPassword(passwordEncoder.encode(pwd));
+        String pwdd = user.getPassword();
+        user.setPassword(passwordEncoder.encode(pwdd));
         log.info("Saving new user {} to the database", user.getFirstname());
         return userRepository.save(user);
     }
     @Override
+    @ResponseBody
     public List<Users> listuser() {
         log.info("Fetching all users");
         return userRepository.findAll();

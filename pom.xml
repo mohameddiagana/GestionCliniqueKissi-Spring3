@@ -8,6 +8,13 @@
 		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
+<!--	<properties>-->
+<!--		<tomcat.version>8.0.15</tomcat.version>-->
+<!--	</properties>-->
+
+
+
 	<groupId>sn.seck</groupId>
 	<artifactId>GestionCliniqueKissi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -28,6 +35,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+			<version>3.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -36,7 +44,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<version>3.0.2</version>
 		</dependency>
+
+
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity6</artifactId>
@@ -85,8 +96,6 @@
 			<scope>runtime</scope>
 		</dependency>
 
-
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -127,13 +136,46 @@
 			<version>3.0.1</version>
 		</dependency>
 
-<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.webjars/bootstrap &ndash;&gt;-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
 <!--		<dependency>-->
-<!--			<groupId>org.webjars</groupId>-->
-<!--			<artifactId>bootstrap</artifactId>-->
-<!--			<version>5.2.3</version>-->
+<!--			<groupId>org.springframework.security</groupId>-->
+<!--			<artifactId>spring-security-oauth2-resource-server</artifactId>-->
+<!--			<version>6.0.2</version>-->
 <!--		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-properties-migrator</artifactId>-->
+		<!--			<scope>runtime</scope>-->
+		<!--		</dependency>-->
 
+		<!-- https://mockito.com/mockito/org.springframework.boot/spring-boot-mockito -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.10.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito2</artifactId>
+			<version>2.0.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>2.0.2</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
+
+		<!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>5.2.3</version>
+		</dependency>
 
 	</dependencies>
 

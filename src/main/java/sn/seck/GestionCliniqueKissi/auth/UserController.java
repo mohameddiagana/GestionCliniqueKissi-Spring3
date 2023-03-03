@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import sn.seck.GestionCliniqueKissi.Model.Users;
 import sn.seck.GestionCliniqueKissi.Service.UserService;
 
-
 import java.util.List;
 
 @RestController
@@ -25,11 +24,10 @@ public class UserController {
         this.userService = userService;
     }
 
-
     /*pour recuperation des users*/
     @RequestMapping(value = "/users",method = RequestMethod.GET)
     @ResponseBody
-    @ ResponseStatus ( HttpStatus. OK )
+    @ ResponseStatus ( HttpStatus.OK )
     @PreAuthorize( "hasRole('USER') or hasRole('ADMIN')" )
     public List<Users> userList(){
         log.info("Fetching all users{}");
@@ -44,6 +42,8 @@ public class UserController {
         log.info("add user in database{}",user.getUsername());
         return userService.addNewUser(user);
     }
+
+
 
  }
 

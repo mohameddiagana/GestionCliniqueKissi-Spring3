@@ -12,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -27,14 +28,13 @@ import java.util.Date;
 @Table(name = "patient",
 uniqueConstraints =
 @UniqueConstraint(columnNames = "email"))
-
 @EntityListeners(AuditingEntityListener.class)
 public class Patient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idpatient;
     @Column(name = "codep")
-    private int codep;
+    private String codep;
     @Column(name = "nomp")
     private String nomp;
     @Column(name = "prenom")
@@ -47,18 +47,24 @@ public class Patient implements Serializable {
     @Column(name = "sexe")
     private String sexe;
     @Column(name = "datenaissance")
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "GMT")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "GMT")
+    //@DateTimeFormat(pattern = "dd/MM/yyyy")
     @CreatedDate
     private LocalDate datenaissance;
     @Column(name = "adresse")
     private String adresse;
     @Column(name = "profession")
     private String profession;
-    @Column(name = "cin")
+    @Column(name = "cin",nullable = false,length = 150)
     private int CIN;
     @Column(name = "age")
     private int age;
+
+//    public int getAge() {
+//        LocalDate maintenant = LocalDate.now();
+//        LocalDate dateNaissance;
+//        return Period.between(datenaissance, maintenant).getYears();
+//    }
 
 
     public Patient(int idpatient, int codep, String nomp, String prenom, String email, String tel, String sexe, Date datenaissance, String adresse, String profession, String cin, int age) {

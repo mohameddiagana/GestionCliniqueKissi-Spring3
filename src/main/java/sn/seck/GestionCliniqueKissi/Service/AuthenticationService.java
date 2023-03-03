@@ -11,11 +11,11 @@ import sn.seck.GestionCliniqueKissi.Repository.UserRepository;
 import sn.seck.GestionCliniqueKissi.auth.AuthenticationRequest;
 import sn.seck.GestionCliniqueKissi.auth.AuthenticationResponse;
 import sn.seck.GestionCliniqueKissi.auth.RegisterRequest;
-import sn.seck.GestionCliniqueKissi.config.JwtService;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
+
     private final UserRepository userRepository;
 
    private final PasswordEncoder passwordEncoder;
