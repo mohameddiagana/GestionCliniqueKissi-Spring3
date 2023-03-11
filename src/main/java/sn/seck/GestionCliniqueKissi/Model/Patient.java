@@ -3,6 +3,7 @@ package sn.seck.GestionCliniqueKissi.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import lombok.*;
@@ -18,11 +19,11 @@ import java.util.Date;
 
 
 
-@Data
 @Getter
 @Setter
 @Entity
 @ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "patient",
@@ -33,13 +34,14 @@ public class Patient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idpatient;
-    @Column(name = "codep")
+    @Column(name = "codep",nullable = false,length = 150)
     private String codep;
-    @Column(name = "nomp")
+    @Column(name = "nomp",nullable = false,length = 150)
     private String nomp;
-    @Column(name = "prenom")
+    @Column(name = "prenom",nullable = false,length = 150)
     private String prenom;
     @Column(name = "email")
+    @NotBlank(message = "entrer vos mail")
     @Email(message = "email de dois pas etre null")
     private String email;
     @Column(name = "tel")
@@ -55,24 +57,31 @@ public class Patient implements Serializable {
     private String adresse;
     @Column(name = "profession")
     private String profession;
-    @Column(name = "cin",nullable = false,length = 150)
+    @Column(name = "CIN")
     private int CIN;
     @Column(name = "age")
     private int age;
 
-//    public int getAge() {
+
+//    public int getAge(LocalDate date, Date startDate, Date endDate) {
 //        LocalDate maintenant = LocalDate.now();
 //        LocalDate dateNaissance;
+//
 //        return Period.between(datenaissance, maintenant).getYears();
+//
 //    }
 
 
-    public Patient(int idpatient, int codep, String nomp, String prenom, String email, String tel, String sexe, Date datenaissance, String adresse, String profession, String cin, int age) {
+
+    public Patient(int idpatient, int codep, String nomp, String prenom, String email, String tel, String sexe, Date datenaissance, String adresse, String profession, int CIN, int age) {
     }
 
 
 
 }
+//        !(date.before(startDate) || date.after(endDate))
+//        !date.before(startDate) && !date.after(endDate)
+//        return !(startDate != null && date.before(startDate) || endDate != null && date.after(endDate));
 
 
 

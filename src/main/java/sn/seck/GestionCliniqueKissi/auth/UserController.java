@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@RequestMapping("/api/v1/users")
-@CrossOrigin("http://localhost:8080/api/v1/users")
+@RequestMapping("/api/v1/auth/users")
+@CrossOrigin("http://localhost:8080/api/v1/auth/users")
 public class UserController {
 
    @Autowired

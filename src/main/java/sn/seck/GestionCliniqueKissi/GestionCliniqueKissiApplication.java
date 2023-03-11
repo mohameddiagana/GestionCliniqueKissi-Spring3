@@ -59,32 +59,32 @@ public class GestionCliniqueKissiApplication {
 			System.out.println("La date d'aujourd'hui est: " + dateFormatted);
 
 
-			userService.addNewUser(new Users( 1,"moha","diagana","mdiaganaisidk@gmail.com","1234", Role.ADMIN ));
-	userService.addNewUser(new Users( 2,"mohamed bocar","samba","assisi@gmail.sn","passer123", Role.USER ));
-	userService.addNewUser(new Users( 3,"yacoub","samba","ycb@gmail.sn","passer123", Role.SUPER_ADMIN ));
-	userService.addNewUser(new Users( 4,"da bocar","va","yassine@gmail.sn","123", Role.COMPTABLE ));
+//			userService.addNewUser(new Users( 1,"moha","diagana","mdiaganaisidk@gmail.com","1234", Role.ADMIN ));
+//	userService.addNewUser(new Users( 2,"mohamed bocar","samba","assisi@gmail.sn","passer123", Role.USER ));
+//	userService.addNewUser(new Users( 3,"yacoub","samba","ycb@gmail.sn","passer123", Role.SUPER_ADMIN ));
+//	userService.addNewUser(new Users( 4,"da bocar","va","yassine@gmail.sn","123", Role.COMPTABLE ));
 
-			patientService.addNewPatient(new Patient(1, "c124", "dahaba", "tandia ablaye", "dbtandia@gmail.com", "772512985", "male",
-					LocalDate.now(), "sahm", "developpeur", 861254587, 20));
-
-			patientService.addNewPatient(new Patient(2, "c552","lala","tandia la","lala@gmail.com","772565225","femel",
-					LocalDate.now(),"police4","commercante",877878444,60));
-
-			patientService.addNewPatient(new Patient(3, "c500","dada","daba tal",
-					"taldab@gmail.com","781454748","femel",
-					LocalDate.now(),"diourbelle","developpeuse",548852418,56));
-
-			patientService.addNewPatient(new Patient(4, "c650"," diop","mame",
-					"mame@gmail.com","782156844","femel",
-					LocalDate.now(),"castor","agriculeur",128621125,80));
-
-			patientService.addNewPatient(new Patient(5, "c500","cheik","diagana ba",
-					"ba@gmail.com","78225874","male",
-					LocalDate.now(),"mbacke","eboueur",877878444,50));
-
-			patientService.addNewPatient(new Patient(6, "c126","cheik","camara cheikh",
-					"camara@gmail.com","7855877","male",
-					LocalDate.now(),"kzar","developpeur",877878478,100));
+//			patientService.addNewPatient(new Patient(1, "c124", "dahaba", "tandia ablaye", "dbtandia@gmail.com", "772512985", "homme",
+//					LocalDate.now(), "sahm", "developpeur", 861254587, 20));
+//
+//			patientService.addNewPatient(new Patient(2, "c552","lala","tandia la","lala@gmail.com","772565225","femme",
+//					LocalDate.now(),"police4","commercante",877878444,60));
+//
+//			patientService.addNewPatient(new Patient(3, "c500","dada","daba tal",
+//					"taldab@gmail.com","781454748","femme",
+//					LocalDate.now(),"diourbelle","developpeuse",548852418,56));
+//
+//			patientService.addNewPatient(new Patient(4, "c650"," diop","homme",
+//					"mame@gmail.com","782156844","femme",
+//					LocalDate.now(),"castor","agriculeur",128621125,80));
+//
+//			patientService.addNewPatient(new Patient(5, "c500","cheik","diagana ba",
+//					"ba@gmail.com","78225874","homme",
+//					LocalDate.now(),"mbacke","eboueur",877878444,50));
+//
+//			patientService.addNewPatient(new Patient(6, "c126","cheik","camara cheikh",
+//					"camara@gmail.com","7855877","homme",
+//					LocalDate.now(),"kzar","developpeur",877878478,100));
 
 
 

@@ -39,4 +39,6 @@ public class UserServiceImpl implements UserService {
         log.info("Fetching all users");
         return userRepository.findAll();
     }
+
+
 }

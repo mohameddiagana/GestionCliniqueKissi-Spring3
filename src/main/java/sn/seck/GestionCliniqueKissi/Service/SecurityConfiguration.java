@@ -22,14 +22,21 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .passwordParameter("password")
+//                .usernameParameter("username")
+                .and()
+                .logout()
+                .logoutSuccessUrl("logout_success.html")
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**")
-                //.requestMatchers("/api/v1/users/**").hasAnyRole("USER","ADMIN")
-                //.requestMatchers(HttpMethod.POST/"api/v1/patients/liste/**").hasAnyRole("USER","ADMIN")
-//                .formLogin()
-//                .usernameParameter("username")
-//                .passwordParameter("password")
+                .and()
+                .authorizeHttpRequests()
+                .requestMatchers("/ADMIN/**").permitAll()
+                .requestMatchers("/USER/**").permitAll()
+                .requestMatchers("/api/v1/auth/**","/register")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -38,8 +45,9 @@ public class SecurityConfiguration {
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-
                  return httpSecurity.build();
+        //.authorizeHttpRequests().requestMatchers(HttpMethod.POST).hasAnyRole("USER","ADMIN")
+        //.authorizeHttpRequests().requestMatchers(HttpMethod.GET).hasAnyRole("USER","ADMIN")
     }
 
 
