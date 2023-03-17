@@ -1,44 +1,46 @@
 package sn.seck.GestionCliniqueKissi;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import sn.seck.GestionCliniqueKissi.Model.Patient;
 import sn.seck.GestionCliniqueKissi.Model.Role;
 import sn.seck.GestionCliniqueKissi.Model.Users;
 import sn.seck.GestionCliniqueKissi.Service.PatientService;
 import sn.seck.GestionCliniqueKissi.Service.UserService;
 
+import javax.sql.DataSource;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 
 @SpringBootApplication
 @Configuration
-@EnableAutoConfiguration
+@EntityScan(basePackages = {"sn.seck.GestionCliniqueKissi.Model"})
 @EnableWebMvc
+//@ComponentScan({"sn.seck.GestionCliniqueKissi.Repository"})
 @ComponentScan
 @ComponentScan(basePackages = {"sn.seck.GestionCliniqueKissi.Service"})
+@EnableJpaRepositories("sn.seck.GestionCliniqueKissi.Repository")
 
 public class GestionCliniqueKissiApplication {
+
+//	private DataSource dataSource;
 		private UserService userService;
 		private PatientService patientService;
 
 
-		//private JWTDecoder jwtDecoder;
 
-	public GestionCliniqueKissiApplication(UserService userService, PatientService patientService) {
+	public GestionCliniqueKissiApplication(DataSource dataSource, UserService userService, PatientService patientService) {
+//		this.dataSource = dataSource;
 		this.userService = userService;
 		this.patientService = patientService;
-		//this.jwtDecoder = jwtDecoder;
 	}
 
 	public static void main(String[] args) {

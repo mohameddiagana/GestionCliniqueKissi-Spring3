@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sn.seck.GestionCliniqueKissi.Model.Role;
 import sn.seck.GestionCliniqueKissi.Model.Users;
-import sn.seck.GestionCliniqueKissi.Repository.TokenRepository;
 import sn.seck.GestionCliniqueKissi.Repository.UserRepository;
 import sn.seck.GestionCliniqueKissi.auth.AuthenticationRequest;
 import sn.seck.GestionCliniqueKissi.auth.AuthenticationResponse;

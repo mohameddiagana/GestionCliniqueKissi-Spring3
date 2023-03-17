@@ -73,7 +73,7 @@ public class Patient implements Serializable {
 
 
 
-    public Patient(int idpatient, int codep, String nomp, String prenom, String email, String tel, String sexe, Date datenaissance, String adresse, String profession, int CIN, int age) {
+    public Patient(int idpatient, int codep, String nomp, String prenom, String email, String tel, String sexe, LocalDate datenaissance, String adresse, String profession, int CIN, int age) {
     }
 
 

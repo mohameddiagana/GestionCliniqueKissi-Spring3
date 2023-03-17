@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RequestMapping("/api/v1/auth")
 @Controller
+@CrossOrigin( "http://localhost:8080/api/v1/auth/login")
+
 public class LoginController {
 
     @GetMapping("/logout")
@@ -23,9 +25,9 @@ public class LoginController {
         }
         return "redirect:/";
     }
-        @GetMapping(value = "/login")
+        @GetMapping(value = "/")
         public String login() {
-            return "redirect:/api/v1/auth/login";
+            return "redirect:/login";
         }
 
 }

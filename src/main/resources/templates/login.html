@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+                xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
@@ -40,9 +40,10 @@
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password">
                         </div>
-                        <form name="logout" th:action="@{/logout}" method="post" th:hidden="true">
-                            <input hidden type="submit" value="Deconnexion"/>
-                        </form>
+
+<!--                        <form name="logout" th:action="@{/logout}" method="POST">-->
+<!--                            <input  type="submit" value="Deconnexion"/>-->
+<!--                        </form>-->
 
                         <div class="d-flex mb-5 align-items-center">
                             <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
@@ -63,7 +64,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 

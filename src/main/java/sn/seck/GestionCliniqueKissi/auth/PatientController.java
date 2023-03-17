@@ -23,8 +23,6 @@ import java.util.logging.Logger;
 @Slf4j
 @RequestMapping("/api/v1/auth")
 public class PatientController {
-//    private  static final Logger log = LoggerFactory.getLogger(PatientController.class);
-
     @Autowired
     private PatientRepository patientRepository;
 
@@ -35,30 +33,29 @@ public class PatientController {
 
     @RequestMapping(value = "/patient/liste")
     public String listpatients(ModelMap map) {
-        List<Patient> listpatients = patientRepository.findAll();
+        List<Patient> listpatients = patientRepository.findAll( );
         log.info("Fetching all patients");
-        map.addAttribute("list_patients", patientRepository.findAll());//Pour la liste
-        map.addAttribute("Patient", new Patient());//Pour le formulaire
+        map.addAttribute("list_patients", patientRepository.findAll( ));//Pour la liste
+        map.addAttribute("Patient", new Patient( ));//Pour le formulaire
         return "/patient/liste";
     }
 
     @GetMapping(value = "/patient/delete")
-    public String deletepatient( int idpatient) {
+    public String deletepatient(int idpatient) {
         try {
             patientRepository.delete(patientRepository.getById(idpatient));
             log.info("DELETE THE PATIENT !");
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            ex.printStackTrace( );
         }
         return "redirect:/api/v1/auth/patient/liste";
     }
 
-    @PostMapping(value = "/patient/add")
-    //@ResponseBody
-    public String addNewPatient(int idpatient, String codep,String nomp,String prenom,String adresse, String email,String tel,String sexe,LocalDate datenaissance,String profession,int CIN,int age ) {//ajout et mise à jour
-        log.info("Saving New Patient in database{}",patientRepository.findByPatient(nomp));
-        Patient patient = new Patient();
+    @RequestMapping(value = "/patient/add",method = RequestMethod.POST)
+    public String addNewPatient(int idpatient, String codep, String nomp, String prenom, String adresse, String email, String tel, String sexe, LocalDate datenaissance, String profession, int CIN, int age) {//ajout et mise à jour
+        log.info("Saving New Patient in database{}", patientRepository.findByPatient(nomp));
+        Patient patient = new Patient( );
         patient.setIdpatient(idpatient);
         patient.setCodep(codep);
         patient.setNomp(nomp);
@@ -74,10 +71,10 @@ public class PatientController {
         patient.setAge(age);
         try {
             patientRepository.save(patient);
-            patientRepository.flush();
+            patientRepository.flush( );
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            ex.printStackTrace( );
 
         }
         return "redirect:/api/v1/auth/patient/liste";
@@ -86,16 +83,22 @@ public class PatientController {
 
     @GetMapping(value = "/patient/edit")
     public String edit(ModelMap model, int idpatient) {
+        try {
             List<Patient> patientList = patientRepository.findAll();
             log.info("EDIT THE PATIENT !!!");
-             model.put("list_patients",patientList);
+            model.put("list_patients", patientList);
             Patient patient = patientRepository.getOne(idpatient);
-            model.put("patient",patient);
+            model.put("patient", patient);
 
+        } catch (Exception ex) {
+            ex.printStackTrace( );
 
+        }
         return "redirect:/api/v1/auth/patient/liste";
 
     }
+
+
     @RequestMapping(path = "/patient/update",method = RequestMethod.PUT)
     public String update(@PathVariable int idpatient, @RequestBody Patient patient){
         log.info("UPDATE THE NEW PATIENT !!!");
