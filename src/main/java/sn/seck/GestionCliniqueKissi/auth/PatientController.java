@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 @Slf4j
 @RequestMapping("/api/v1/auth")
 public class PatientController {
-    @Autowired
+
     private PatientRepository patientRepository;
 
     public PatientController(PatientRepository patientRepository) {
@@ -81,22 +81,18 @@ public class PatientController {
 
     }
 
-    @GetMapping(value = "/patient/edit")
-    public String edit(ModelMap model, int idpatient) {
-        try {
+    @RequestMapping(value ="/patient/edit/",method = RequestMethod.GET)
+    public String edit(Model model,  int idpatient) throws Exception {
             List<Patient> patientList = patientRepository.findAll();
             log.info("EDIT THE PATIENT !!!");
-            model.put("list_patients", patientList);
+            model.addAttribute("list_patients", patientList);
             Patient patient = patientRepository.getOne(idpatient);
-            model.put("patient", patient);
+            model.addAttribute("patient", patient);
 
-        } catch (Exception ex) {
-            ex.printStackTrace( );
-
-        }
         return "redirect:/api/v1/auth/patient/liste";
 
     }
+
 
 
     @RequestMapping(path = "/patient/update",method = RequestMethod.PUT)

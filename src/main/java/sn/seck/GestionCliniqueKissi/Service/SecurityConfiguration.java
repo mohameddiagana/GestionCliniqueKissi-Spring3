@@ -34,8 +34,6 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .and()
                 .authorizeHttpRequests()
-//                .requestMatchers("/ADMIN/**").permitAll()
-//                .requestMatchers("/USER/**").permitAll()
                 .requestMatchers("/api/v1/auth/**")
                 .permitAll()
                 .anyRequest()
@@ -46,9 +44,10 @@ public class SecurityConfiguration {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
                  return httpSecurity.build();
-        //.authorizeHttpRequests().requestMatchers(HttpMethod.POST).hasAnyRole("USER","ADMIN")
-        //.authorizeHttpRequests().requestMatchers(HttpMethod.GET).hasAnyRole("USER","ADMIN")
+
     }
+//    .authorizeHttpRequests().requestMatchers(HttpMethod.POST).hasAnyRole("USER","ADMIN")
+//    .authorizeHttpRequests().requestMatchers(HttpMethod.GET).hasAnyRole("USER","ADMIN")
 
 
 }
