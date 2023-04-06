@@ -9,10 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 //@CrossOrigin("*")
 @RequestMapping("/api/v1/auth")
-@Controller
+@RestController
 @CrossOrigin( "http://localhost:8080/api/v1/auth/login")
 
 public class LoginController {
@@ -25,9 +26,9 @@ public class LoginController {
         }
         return "redirect:/";
     }
-        @GetMapping(value = "/")
+        @RequestMapping(value = "/login")
         public String login() {
-            return "redirect:/login";
+            return "redirect:/api/v1/auth/login";
         }
 
 }

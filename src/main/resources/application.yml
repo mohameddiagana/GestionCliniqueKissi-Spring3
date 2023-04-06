@@ -3,7 +3,7 @@
 #    url: jdbc:postgresql://localhost:5432/GestionCliniqueKissi
 #    username: diagana
 #    password: diagana
-#    #datasource.initialization-mode-always
+#    #datasource.initialization-mode-always]
 #    driver-class-name: org.postgresql.Driver
 #    jpa:
 #      hibernate:

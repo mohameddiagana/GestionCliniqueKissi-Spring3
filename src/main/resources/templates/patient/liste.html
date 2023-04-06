@@ -10,28 +10,6 @@
     <link rel="stylesheet" type="text/css" href="/webjars/font-awesome/css/font-awesome.all.css"/>
 </head>
 <body>
-
-<!--<nav class="navbar navbar-expand-md bg-dark navbar-dark">-->
-<!--    &lt;!&ndash; Brand &ndash;&gt;-->
-<!--    <a class="navbar-brand" href="#">Patient Management</a>-->
-
-<!--    &lt;!&ndash; Toggler/collapsibe Button &ndash;&gt;-->
-<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">-->
-<!--        <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-
-<!--    &lt;!&ndash; Navbar links &ndash;&gt;-->
-<!--    <div class="collapse navbar-collapse" id="collapsibleNavbar">-->
-<!--        <ul class="navbar-nav">-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" th:href="@{/patient/liste}">Patient</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="#">Link</a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</nav>-->
 <div class="container">
     <div class="card">
         <div class="card-header">Liste des Patient</div>
@@ -69,9 +47,7 @@
                     <td th:text="${p.age}"></td>
                     <td>
                         <a class="btn btn-primary"
-                           th:href="@{/api/v1/auth/patient/edit(idpatient=${p.idpatient})}">Editer
-                        </a>
-
+                           th:href="@{/api/v1/auth/patient/Editer(idpatient=${p.idpatient})}">Editer</a>
                     </td>
 
                     <td>
@@ -87,7 +63,7 @@
 
         <div class="panel-heading">Formulaire des Patient
             <div class="panel-body">
-                <form method="POST" th:action="@{/api/v1/auth/patient/add}" th:object="${Patient}">
+                <form method="POST" th:action="@{/api/v1/auth/patient/NouveauPatient}" th:object="${Patient}">
 
                     <label> IdPatient :</label>
                     <input class="form-control" type="text" readonly th:field="*{idpatient}"/>
@@ -153,5 +129,3 @@
 
 
 </html>
-
-

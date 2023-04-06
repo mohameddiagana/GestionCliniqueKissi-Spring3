@@ -1,5 +1,6 @@
 package sn.seck.GestionCliniqueKissi.auth;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;

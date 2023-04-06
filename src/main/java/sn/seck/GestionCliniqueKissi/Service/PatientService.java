@@ -1,6 +1,5 @@
 package sn.seck.GestionCliniqueKissi.Service;
 
-import org.springframework.stereotype.Service;
 import sn.seck.GestionCliniqueKissi.Model.Patient;
 
 

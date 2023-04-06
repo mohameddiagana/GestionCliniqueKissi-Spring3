@@ -15,10 +15,10 @@
     <div class="card">
         <div class="card-header">Liste des Users</div>
         <div class="card-body" style="overflow-y:scroll">
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                 <tr>
-                    <th>id</th>
+                    <th>iduser</th>
                     <th>firstname</th>
                     <th>lastname</th>
                     <th>email</th>
@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="u : ${list_users}">
-                    <td th:text="${u.id}"></td>
+                    <td th:text="${u.iduser}"></td>
                     <td th:text="${u.firstname}"></td>
                     <td th:text="${u.lastname}"></td>
                     <td th:text="${u.email}"></td>
@@ -37,13 +37,13 @@
                     <td th:text="${u.role}"></td>
                     <td>
                         <a class="btn btn-primary"
-                           th:href="@{/api/v1/auth/users/edit(id=${u.id})}">Editer</a>
+                           th:href="@{/api/v1/auth/users/edit(iduser=${u.id})}">Editer</a>
                     </td>
 
                     <td>
                         <a class="btn btn-danger"
                            onclick="return confirm('Etes Vous Sure de vouloir supprimer ce Users !!! ')"
-                           th:href="@{/api/v1/auth/users/delete(id=${u.id})}">Supprimer</a>
+                           th:href="@{/api/v1/auth/users/delete(iduser=${u.id})}">Supprimer</a>
                     </td>
 
                 </tr>
@@ -57,7 +57,7 @@
         <form method="POST" th:action="@{/api/v1/auth/users/add}" th:object="${user}">
 
             <label> id :</label>
-            <input class="form-control" type="text" readonly th:field="*{id}"/>
+            <input class="form-control" type="text" readonly th:field="*{iduser}"/>
 
             <label> Firstname :</label>
             <input type="text" name="firstname" required th:field="*{firstname}"/>
@@ -73,7 +73,7 @@
 
             <div class="form-group">
                 <label class="control-label">Role</label>
-                <select class="form-control" type="select" name="idrole">
+                <select class="form-control" type="select" name="name">
 
                     <option value="0">Faite votre choix</option>
                     <option th:each="r:${list_roles}"  th:text="${r.name}"></option>

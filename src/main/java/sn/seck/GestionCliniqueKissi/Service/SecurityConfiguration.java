@@ -22,7 +22,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf()
-//                .and()
+                  // .and()
 //                .formLogin()
                 //.loginPage("/login")
 //                .passwordParameter("password")
@@ -34,7 +34,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**")
+//                .and()
+//                .authorizeHttpRequests()
+//                .requestMatchers("/edit/**").hasAuthority("USER")
+                .requestMatchers("/api/v1/auth/**","/login")
+
                 .permitAll()
                 .anyRequest()
                 .authenticated()
