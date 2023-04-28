@@ -1,7 +1,9 @@
 package sn.seck.GestionCliniqueKissi.Service;
 
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,9 @@ import java.util.List;
 @Slf4j
 @CacheConfig(cacheNames = "users")
 public class UserServiceImpl implements UserService {
-
+@Autowired
     private UserRepository userRepository;
-    //@Autowired
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
@@ -33,17 +35,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
     @Override
-    //@ResponseBody
     public List<Users> listuser() {
         log.info("Fetching all users");
         return userRepository.findAll();
     }
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder()
-//    {
-//        return new BCryptPasswordEncoder();
-//    }
 
 
 }

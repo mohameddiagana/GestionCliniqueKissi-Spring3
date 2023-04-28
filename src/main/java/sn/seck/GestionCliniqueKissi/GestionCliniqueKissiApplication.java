@@ -1,6 +1,6 @@
 package sn.seck.GestionCliniqueKissi;
 
-import jakarta.persistence.EntityResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,14 +21,17 @@ import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication()
 @Configuration
-@EntityScan(basePackages = {"sn.seck.GestionCliniqueKissi.Model.Role*"})
 @EnableWebMvc
-@ComponentScan
 @ComponentScan(basePackages = {"sn.seck.GestionCliniqueKissi.Service"})
 @EnableJpaRepositories(value = "sn.seck.GestionCliniqueKissi.Repository")
 
+@ComponentScan(basePackages = "sn.seck.GestionCliniqueKissi.Model.Users")
+
+
 public class GestionCliniqueKissiApplication {
+		@Autowired
 		private UserService userService;
+		@Autowired
 		private PatientService patientService;
 
 	public GestionCliniqueKissiApplication(UserService userService, PatientService patientService) {
@@ -57,7 +60,7 @@ public class GestionCliniqueKissiApplication {
 			userService.addNewUser(new Users( 1,"moha","diagana","mdiaganaisidk@gmail.com","1234", Role.ADMIN ));
 	userService.addNewUser(new Users( 2,"mohamed bocar","samba","assisi@gmail.sn","passer123", Role.USER ));
 	userService.addNewUser(new Users( 3,"yacoub","samba","ycb@gmail.sn","passer123", Role.SUPER_ADMIN ));
-	userService.addNewUser(new Users( 4,"da bocar","va","yassine@gmail.sn","123", Role.COMPTABLE ));
+	userService.addNewUser(new Users( 4,"da bocar","va","yassine@gmail.sn","123", Role.RH ));
 
 //			patientService.addNewPatient(new Patient(1, "c124", "dahaba", "tandia ablaye", "dbtandia@gmail.com", "772512985", "homme",
 //					LocalDate.now(), "sahm", "developpeur", 861254587, 20));

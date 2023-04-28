@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 //@CrossOrigin("*")
 @RequestMapping("/api/v1/auth")
 @RestController
-@CrossOrigin( "http://localhost:8080/api/v1/auth/login")
+@CrossOrigin( "http://localhost:7075/api/v1/auth/login")
 
 public class LoginController {
 

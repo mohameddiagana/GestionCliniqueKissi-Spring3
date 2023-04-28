@@ -50,7 +50,6 @@ public class Patient implements Serializable {
     private String sexe;
     @Column(name = "datenaissance")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "GMT")
-    //@DateTimeFormat(pattern = "dd/MM/yyyy")
     @CreatedDate
     private LocalDate datenaissance;
     @Column(name = "adresse")

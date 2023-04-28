@@ -18,7 +18,6 @@ public class AuthenticationService {
 
     private final UserRepository userRepository;
 
-//    private final TokenRepository tokenRepository;
    private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -35,23 +34,11 @@ public class AuthenticationService {
                  userRepository.save(user);
                 //var savedUser=
                 var jwtToken = jwtService.generateToken(user);
-//                saveUserToken(savedUser, jwtToken);
 
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();
     }
-
-//    private void saveUserToken(Users users, String jwtToken) {
-//        var token = Token.builder()
-//                .users(users)
-//                .token(jwtToken)
-//                .tokenType(TokenType.BEARER)
-//                .expired(false)
-//                .revoked(false)
-//                .build();
-//        tokenRepository.save(token);
-
 
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
@@ -65,7 +52,6 @@ public class AuthenticationService {
                 .orElseThrow();
 
         var jwtToken = jwtService.generateToken(users);
-//        saveUserToken(users,jwtToken);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .build();

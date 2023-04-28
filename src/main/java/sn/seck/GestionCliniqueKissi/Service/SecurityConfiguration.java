@@ -22,11 +22,6 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf()
-                  // .and()
-//                .formLogin()
-                //.loginPage("/login")
-//                .passwordParameter("password")
-//                .usernameParameter("username")
                 .and()
                 .logout()
                 .logoutSuccessUrl("logout_success.html")
@@ -34,11 +29,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .and()
                 .authorizeHttpRequests()
-//                .and()
-//                .authorizeHttpRequests()
-//                .requestMatchers("/edit/**").hasAuthority("USER")
+                .and()
+                .authorizeHttpRequests()
+//                .requestMatchers("/USER/**").hasRole("USER")
+//                .requestMatchers("/USER/**").hasRole("USER")
                 .requestMatchers("/api/v1/auth/**","/login")
-
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -50,8 +45,5 @@ public class SecurityConfiguration {
                  return httpSecurity.build();
 
     }
-//    .authorizeHttpRequests().requestMatchers(HttpMethod.POST).hasAnyRole("USER","ADMIN")
-//    .authorizeHttpRequests().requestMatchers(HttpMethod.GET).hasAnyRole("USER","ADMIN")
-
 
 }
