@@ -1,6 +1,7 @@
 package sn.seck.GestionCliniqueKissi.auth;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,12 +11,14 @@ import sn.seck.GestionCliniqueKissi.Repository.PatientRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Logger;
 
 @CrossOrigin(origins = "*")
-@Controller
 @Slf4j
+@Controller
 @RequestMapping("/api/v1/auth")
 public class PatientController {
+//    private static final Logger log = LogFactory.getFactory(PatientController.class);
     @Autowired
     private PatientRepository patientRepository;
 
@@ -30,10 +33,10 @@ public class PatientController {
         map.addAttribute("list_patients", patientRepository.findAll( ));//Pour la liste
         map.addAttribute("Patient", new Patient( ));//Pour le formulaire
         return "/patient/liste";
-    }
+ }
 
     @GetMapping(value = "/patient/delete")
-    public String handleDeletePatient(int idpatient) {
+    public String deletepatient(int idpatient) {
         try {
             patientRepository.delete(patientRepository.getById(idpatient));
             log.info("DELETE THE PATIENT !");
@@ -63,7 +66,7 @@ public class PatientController {
         patient.setCIN(CIN);
         patient.setAge(age);
         try {
-            patientRepository.save(patient);
+            patientRepository.saveAndFlush(patient);
             patientRepository.flush( );
 
         } catch (Exception ex) {

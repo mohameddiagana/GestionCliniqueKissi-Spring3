@@ -1,6 +1,8 @@
 package sn.seck.GestionCliniqueKissi.auth;
 
 import lombok.*;
+import sn.seck.GestionCliniqueKissi.Model.Role;
+
 @Data
 @Getter
 @Setter
@@ -11,6 +13,8 @@ public class RegisterRequest {
     private String lastname;
     private String email;
     private String password;
+
+    private Role role;
 
 
 }

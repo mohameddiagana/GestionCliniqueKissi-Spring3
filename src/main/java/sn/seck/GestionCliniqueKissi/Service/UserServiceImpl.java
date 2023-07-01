@@ -1,7 +1,6 @@
 package sn.seck.GestionCliniqueKissi.Service;
 
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -24,6 +23,7 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+
         this.passwordEncoder = passwordEncoder;
     }
 

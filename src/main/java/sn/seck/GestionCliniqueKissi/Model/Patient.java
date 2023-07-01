@@ -16,8 +16,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
-
-
+import java.util.logging.Logger;
 
 @Getter
 @Setter
@@ -74,7 +73,6 @@ public class Patient implements Serializable {
 
     public Patient(int idpatient, int codep, String nomp, String prenom, String email, String tel, String sexe, LocalDate datenaissance, String adresse, String profession, int CIN, int age) {
     }
-
 
 
 }
