@@ -10,14 +10,11 @@ import sn.seck.GestionCliniqueKissi.Repository.PatientRepository;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.logging.Logger;
-
 @CrossOrigin(origins = "*")
 @Slf4j
 @Controller
 @RequestMapping("/api/v1/auth")
 public class PatientController {
-//    private static final Logger log = LogFactory.getFactory(PatientController.class);
     @Autowired
     private PatientRepository patientRepository;
 
@@ -32,6 +29,7 @@ public class PatientController {
         map.addAttribute("list_patients", patientRepository.findAll( ));//Pour la liste
         map.addAttribute("Patient", new Patient( ));//Pour le formulaire
         return "/patient/liste";
+//       return getPatientList.toString();
  }
 
     @GetMapping(value = "/patient/delete")
@@ -48,6 +46,7 @@ public class PatientController {
     }
 
     @RequestMapping(value = "/patient/add",method = RequestMethod.POST)
+
     public String NouveauPatient(int idpatient, String codep, String nomp, String prenom, String adresse, String email, String tel, String sexe, LocalDate datenaissance, String profession, int CIN, int age) {//ajout et mise à jour
         log.info("Saving New Patient in database{}", patientRepository.findByPatient(nomp));
         Patient patient = new Patient( );
@@ -64,6 +63,10 @@ public class PatientController {
         patient.setProfession(profession);
         patient.setCIN(CIN);
         patient.setAge(age);
+
+
+
+
         try {
             patientRepository.saveAndFlush(patient);
             patientRepository.flush( );
