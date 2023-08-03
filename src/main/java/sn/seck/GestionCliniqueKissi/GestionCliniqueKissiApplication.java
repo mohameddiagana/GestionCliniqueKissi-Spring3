@@ -56,10 +56,6 @@ public class GestionCliniqueKissiApplication {
 		return args -> {
 
 
-
-
-
-//
 			LocalDate date = LocalDate.now();
 			// Formater la date dans un format spécifique
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
