@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import sn.seck.GestionCliniqueKissi.Model.Patient;
 
-//@Repository
+@Repository
 @CrossOrigin("*")/*PERMIT D'ACCEPTER LES REQUETE*/
 public interface PatientRepository extends JpaRepository<Patient,Integer> {
   @Query(value = "SELECT p FROM Patient p WHERE p.nomp =:nomp")
