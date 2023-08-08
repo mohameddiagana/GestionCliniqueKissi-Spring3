@@ -11,5 +11,5 @@ import sn.seck.GestionCliniqueKissi.Model.Patient;
 @CrossOrigin("*")/*PERMIT D'ACCEPTER LES REQUETE*/
 public interface PatientRepository extends JpaRepository<Patient,Integer> {
   @Query(value = "SELECT p FROM Patient p WHERE p.nomp =:nomp")
-    public Patient findByPatient(@Param("nomp")String nomp);
+    public Patient findByPatient(@Param("nomp")String nomp); 
 }
