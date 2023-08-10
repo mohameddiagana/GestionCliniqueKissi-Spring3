@@ -28,8 +28,8 @@ public class PatientController {
         log.info("Fetching all patients");
         map.addAttribute("list_patients", patientRepository.findAll( ));//Pour la liste
         map.addAttribute("Patient", new Patient( ));//Pour le formulaire
-        return "/patient/liste";
-//       return getPatientList.toString();
+//        return "/patient/liste";
+        return getPatientList.toString();
  }
 
     @GetMapping(value = "/patient/delete")

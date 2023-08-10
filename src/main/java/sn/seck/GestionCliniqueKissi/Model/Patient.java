@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -59,7 +60,6 @@ public class Patient implements Serializable {
     private int CIN;
     @Column(name = "age")
     private int age;
-
 
 //    public int getAge(LocalDate date, Date startDate, Date endDate) {
 //        LocalDate maintenant = LocalDate.now();
