@@ -40,7 +40,6 @@ public class Users implements UserDetails {
 
 //    @OneToMany(mappedBy = "users")
 //    private List<Token> tokens;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return role.authorities();

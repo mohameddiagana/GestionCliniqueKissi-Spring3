@@ -72,8 +72,6 @@
 			<version>0.8.8</version>
 		</dependency>
 
-
-
 		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
@@ -117,8 +115,6 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.swagger/ -->
 
-
-
 		<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
 		<dependency>
 			<groupId>org.webjars</groupId>
@@ -126,7 +122,6 @@
 			<version>6.3.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
-
 
 		<!--POUR LA RAPIDITE DE L'APPLICATION-->
 		<dependency>

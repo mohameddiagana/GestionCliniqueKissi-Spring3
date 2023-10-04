@@ -1,6 +1,7 @@
 package sn.seck.GestionCliniqueKissi.auth;
 
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,9 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import sn.seck.GestionCliniqueKissi.Model.Patient;
 import sn.seck.GestionCliniqueKissi.Repository.PatientRepository;
 
-import java.time.LocalDate;
-import java.util.List;
-@CrossOrigin(origins = "*")
+
+//@CrossOrigin(origins = "*")
 @Slf4j
 @Controller
 @RequestMapping("/api/v1/auth")
@@ -24,7 +24,7 @@ public class PatientController {
 
     @RequestMapping(value = "/patient/liste")
     public String getPatientList(ModelMap map) {
-        List<Patient> getPatientList = patientRepository.findAll( );
+        java.util.List<Patient> getPatientList = patientRepository.findAll( );
         log.info("Fetching all patients");
         map.addAttribute("list_patients", patientRepository.findAll( ));//Pour la liste
         map.addAttribute("Patient", new Patient( ));//Pour le formulaire
@@ -64,13 +64,8 @@ public class PatientController {
         patient.setCIN(CIN);
         patient.setAge(age);
 
-
-
-
         try {
             patientRepository.saveAndFlush(patient);
-            patientRepository.flush( );
-
         } catch (Exception ex) {
             ex.printStackTrace( );
 
