@@ -16,9 +16,9 @@ import java.util.List;
 @Slf4j
 @CacheConfig(cacheNames = "users")
 public class UserServiceImpl implements UserService {
-@Autowired
+//    @Autowired
     private UserRepository userRepository;
-    @Autowired
+   // @Autowired
     private PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {

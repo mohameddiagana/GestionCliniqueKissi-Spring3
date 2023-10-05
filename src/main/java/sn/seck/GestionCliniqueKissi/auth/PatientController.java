@@ -1,13 +1,14 @@
 package sn.seck.GestionCliniqueKissi.auth;
 
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.mapping.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import sn.seck.GestionCliniqueKissi.Model.Patient;
 import sn.seck.GestionCliniqueKissi.Repository.PatientRepository;
+
+import java.time.LocalDate;
+import java.util.List;
 
 
 //@CrossOrigin(origins = "*")
@@ -77,7 +78,7 @@ public class PatientController {
     @RequestMapping(value = "/patient/edit",method = RequestMethod.GET)
     public String setEdit(ModelMap model, int idpatient) {
         try {
-            List<Patient> patientList = patientRepository.findAll();
+           List<Patient>patientList = patientRepository.findAll();
             log.info("EDIT THE PATIENT !!!");
             model.put("list_patients", patientList);
             Patient patient = patientRepository.getOne(idpatient);
