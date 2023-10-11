@@ -33,9 +33,7 @@ import java.time.format.DateTimeFormatter;
 @ComponentScan(basePackages = "sn.seck.GestionCliniqueKissi.Model.Users")
 @OpenAPIDefinition
 public class GestionCliniqueKissiApplication {
-//		@Autowired
 		private UserService userService;
-//		@Autowired
 		private PatientService patientService;
 
 
@@ -67,13 +65,13 @@ public class GestionCliniqueKissiApplication {
 	userService.addNewUser(new Users( 2,"mohamed bocar","samba","assisi@gmail.sn","passer123", Role.USER ));
 	userService.addNewUser(new Users( 3,"yacoub","samba","manager@gmail.sn","passer123", Role.MANAGER ));
 	userService.addNewUser(new Users( 4,"da bocar","cheikh","admin@gmail.sn","123", Role.ADMIN ));
-			patientService.addNewPatient(new Patient(1, "c124", "dahaba", "tandia ablaye", "dbtandia@gmail.com", "772512985", "homme",
+			patientService.addNewPatient(new Patient(2, "c124", "dahaba", "tandia ablaye", "dbtandia@gmail.com", "772512985", "homme",
 					LocalDate.now(), "sahm", "developpeur", 861254587, 20));
 
-			patientService.addNewPatient(new Patient(2, "c552","lala","tandia la","daha@gmail.com","772565225","femme",
+			patientService.addNewPatient(new Patient(3, "c552","lala","tandia la","daha@gmail.com","772565225","femme",
 					LocalDate.now(),"police4","commercante",877878444,60));
 //
-			patientService.addNewPatient(new Patient(3, "c500","dada","daba tal",
+			patientService.addNewPatient(new Patient(4, "c500","dada","daba tal",
 					"taldab@gmail.com","781454748","femme",
 					LocalDate.now(),"diourbelle","developpeuse",548852418,56));
 
@@ -82,7 +80,9 @@ public class GestionCliniqueKissiApplication {
 					"mame@gmail.com","782156844","femme",
 					LocalDate.now(),"castor","agriculeur",128621125,80));
 
-
+			patientService.addNewPatient(new Patient(6, "c51"," dddbaa","sarr",
+					"mae@gmail.com","458872593","male",
+					LocalDate.now(),"castor","culte",201104786,23));
 
 
 

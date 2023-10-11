@@ -1,19 +1,12 @@
 package sn.seck.GestionCliniqueKissi.Model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.core.SerializableString;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
-import org.hibernate.engine.jdbc.SerializableClobProxy;
-import org.springframework.core.serializer.Serializer;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -22,10 +15,10 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@ToString
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+/*@ToString*/
 @Table(name = "patient",
 uniqueConstraints =
 @UniqueConstraint(columnNames = "email"))
@@ -75,6 +68,9 @@ public class Patient implements Serializable {
     }
 
 
+    public String toString() {
+        return "Patient(idpatient=" + this.getIdpatient() + ", codep=" + this.getCodep() + ", nomp=" + this.getNomp() + ", prenom=" + this.getPrenom() + ", email=" + this.getEmail() + ", tel=" + this.getTel() + ", sexe=" + this.getSexe() + ", datenaissance=" + this.getDatenaissance() + ", adresse=" + this.getAdresse() + ", profession=" + this.getProfession() + ", CIN=" + this.getCIN() + ", age=" + this.getAge() + ")";
+    }
 }
 //        !(date.before(startDate) || date.after(endDate))
 //        !date.before(startDate) && !date.after(endDate)
